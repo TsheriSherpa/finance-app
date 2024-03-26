@@ -22,6 +22,7 @@ function MyTabs() {
 					tabBarIcon: ({ color, size }) => (
 						<Ionicons name="file-tray-full-outline" color={color} size={size} />
 					),
+					headerShown: false
     			}}
 			/>
 			<Tab.Screen 
@@ -42,8 +43,8 @@ function MyTabs() {
 const TransactionStack = () => {
 	return (
 	  <Stack.Navigator>
-		<Stack.Screen name="Transaction" component={TransactionScreen} options={{ headerShown: false }} />
-		<Stack.Screen name="Detail" component={TransactionDetailScreen}  options={{ headerShown: false }}/>
+		<Stack.Screen name="Transaction" component={TransactionScreen} />
+		<Stack.Screen name="Detail" component={TransactionDetailScreen} />
 	  </Stack.Navigator>
 	);
   };
