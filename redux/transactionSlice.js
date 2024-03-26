@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit'
 import { createSelector } from '@reduxjs/toolkit';
 
 var initialState = [
-	{ id: 1, title: "Transaction 1", amount: "10.0", address: "141 Lyman St, London, ON"},
-	{ id: 2, title: "Transaction 2", amount: "12.0", address: "141 Lyman St, London, ON"},
-	{ id: 3, title: "Transaction 3", amount: "13.0", address: "141 Lyman St, London, ON"},
-	{ id: 4, title: "Transaction 4", amount: "14.0", address: "141 Lyman St, London, ON"},
-	{ id: 5, title: "Transaction 5", amount: "15.0", address: "141 Lyman St, London, ON"},
+	{ id: 2, title: "Walmart", amount: "12.00", address: "141 Lyman St, London, ON", date: "11 March, 2024"},
+	{ id: 3, title: "Tim Hortons", amount: "13.00", address: "141 Horton St, London, ON", date: "12 March, 2024"},
+	{ id: 1, title: "Turtle Jacks", amount: "10.00", address: "141 Oxford St, London, ON", date: "13 March, 2024"},
+	{ id: 4, title: "Food Basic", amount: "14.00", address: "141 McNay St, London, ON", date: "14 March, 2024"},
+	{ id: 5, title: "Circle K", amount: "15.00", address: "141 Victoria St, London, ON", date: "15 March, 2024"},
 ]
 
 export const transactionSlice = createSlice({
