@@ -3,14 +3,14 @@ import ListItem from "../components/listItem";
 import { useSelector } from 'react-redux'
 import React from 'react'
 
-function TransactionScreen() {
+function TransactionScreen(props) {
     const transactions = useSelector((store) => store.transaction)
 
     return (
         <View style={styles.container}>
             <FlatList
                 data={transactions}
-                renderItem={({ item }) => <ListItem title={item.title} amount={item.amount}/>}
+                renderItem={({ item }) => <ListItem transaction={item} navigation={props.navigation}/>}
                 keyExtractor={(item) => item.id}
             />
         </View>
@@ -23,12 +23,11 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      padding: 20,
     },
     item: {
       padding: 10,
       borderBottomWidth: 1,
-      borderBottomColor: '#ccc',
+      borderBottomColor: 'grey',
     },
   });
   
