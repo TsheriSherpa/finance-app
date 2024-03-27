@@ -18,7 +18,7 @@ export default function SummaryScreen() {
             </View>
             <View style={styles.item}>
                 <Text style={styles.title}>Balance:</Text>
-                <Text>{totalAmount}</Text>
+                <Text>${totalAmount}</Text>
             </View>
             <View>
                 <Text style={styles.subTitle}>Highest Spending:</Text>
