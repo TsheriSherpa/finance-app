@@ -1,21 +1,34 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { createSelector } from '@reduxjs/toolkit';
-
-var initialState = [
-	{ id: 2, title: "Walmart", amount: "12.00", address: "141 Lyman St, London, ON", date: "11 March, 2024"},
-	{ id: 3, title: "Tim Hortons", amount: "13.00", address: "141 Horton St, London, ON", date: "12 March, 2024"},
-	{ id: 1, title: "Turtle Jacks", amount: "10.00", address: "141 Oxford St, London, ON", date: "13 March, 2024"},
-	{ id: 4, title: "Food Basic", amount: "14.00", address: "141 McNay St, London, ON", date: "14 March, 2024"},
-	{ id: 5, title: "Circle K", amount: "15.00", address: "141 Victoria St, London, ON", date: "15 March, 2024"},
-]
+import { db, firebaseHelper } from '../firebase';
 
 export const transactionSlice = createSlice({
 	name: 'transaction',
-	initialState: initialState,
+	initialState: [],
 	reducers: {
-
-	},
+		fetchDataSuccess: (state, action) => {
+			return action.payload
+		},
+		addTransaction: (state, action) => {
+			state.push(action.payload)
+		}
+	}
 })
+
+const saveTransactionToFB = (title, address, amount, date) => {
+	db.collection("transactions").add({
+		title: title,
+		address: address,
+		amount: amount,
+		date: date
+	})
+	.then((docRef) => {
+		console.log("Document written with ID: ", docRef.id);
+	})
+	.catch((error) => {
+		console.error("Error adding document: ", error);
+	});
+}
 
 export const selectTotalAmount = (state) => state.transaction.reduce((total, { amount }) => total + parseFloat(amount), 0);
 export const selectTotalTransactions = (state) => state.transaction.length;
@@ -40,5 +53,6 @@ export const selectLeastAmountTransaction = createSelector(
 	}
 );
 
+export const { fetchDataSuccess, addTransaction} = transactionSlice.actions;
 
 export default transactionSlice.reducer
